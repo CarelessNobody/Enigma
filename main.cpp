@@ -35,7 +35,6 @@ int main() {
   string mazeFile = "maze0_dim42.txt";
   vector<string> maze = getMaze(mazeFile);
   launchGUI(maze);
-  cout << "YOOOOOOOOOOOOOOOO";
 
   return 0;
 
