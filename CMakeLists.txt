@@ -1,39 +1,19 @@
-cmake_minimum_required(VERSION 3.16)
-project(Enigma)
-
+cmake_minimum_required(VERSION 3.2)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# SFML paths
-set(SFML_DIR "${CMAKE_SOURCE_DIR}/SFML")
-set(SFML_INCLUDE_DIR "${SFML_DIR}/include")
-set(SFML_LIB_DIR "${SFML_DIR}/lib")
+project(Enigma)
 
-# Include headers from SFML and project Header folder
-include_directories(${SFML_INCLUDE_DIR})
-include_directories(${CMAKE_SOURCE_DIR}/Header)
+## If you want to link SFML statically
+# set(SFML_STATIC_LIBRARIES TRUE)
 
-# Link to SFML libraries
-link_directories(${SFML_LIB_DIR})
+## In most cases better set in the CMake cache
+set(SFML_DIR "C:/Users/weng2/OneDrive/Desktop/Stuff/SFML-2.5.1/lib/cmake/SFML")
 
-# Find all .cpp files in Source/
-file(GLOB_RECURSE SOURCES
-    "${CMAKE_SOURCE_DIR}/Source/*.cpp"
-)
-
-# Build executable
-add_executable(Enigma ${SOURCES})
-
-# Link with SFML (debug versions)
-target_link_libraries(Enigma
-    sfml-graphics-d
-    sfml-window-d
-    sfml-system-d
-)
-
-# Copy DLLs after build
-add_custom_command(TARGET Enigma POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    "${SFML_LIB_DIR}"
-    $<TARGET_FILE_DIR:Enigma>
-)
+find_package(SFML 2.5.1 COMPONENTS system window graphics audio REQUIRED)
+add_executable(Enigma main.cpp
+        Header/gui_window.h
+        Header/ShortestPath.h
+        Source/gui_window.cpp
+        Source/ShortestPath.cpp)
+target_link_libraries(Enigma sfml-system sfml-window sfml-graphics sfml-audio)

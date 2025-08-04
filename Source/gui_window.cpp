@@ -80,7 +80,7 @@ void launchGUI(const vector<string>& maze){
 
     sf::RenderWindow window(sf::VideoMode(width, height), "Maze Visualizer");
     sf::Font font;
-    if (!font.loadFromFile("Roboto-VariableFont_wdth,wght.ttf")){
+    if (!font.loadFromFile("font.ttf")){
         cerr << "Failed to load font\n";
         return;
     }
