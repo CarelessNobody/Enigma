@@ -4,7 +4,7 @@
 #include <utility>
 #include <vector>
 #include <ranges>
-#include "Header/ShortestPath.h"
+#include "Source/gui_window.cpp"
 
 using namespace std;
 
@@ -32,13 +32,16 @@ vector<string> getMaze(string filename) {
 
 
 int main() {
-  vector<string> maze = getMaze("test.txt");
-  ShortestPath algorithm = ShortestPath(maze);
+  string mazeFile = "mazes/test.txt";
+  vector<string> maze = getMaze(mazeFile);
+  launchGUI(maze);
 
-  //Should return no path if starting point is a wall, there is no path, or start and end are the same
-  //Requires valid m x n graph and start and ending point inside graph
-  algorithm.printDijkstra({0,0} , {1,1});
-  algorithm.printAStar({0,0} , {1,1});
+  return 0;
+
+  // //Should return no path if starting point is a wall, there is no path, or start and end are the same
+  // //Requires valid m x n graph and start and ending point inside graph
+  // algorithm.printDijkstra({0,0} , {1,1});
+  // algorithm.printAStar({0,0} , {1,1});
 }
 
 
