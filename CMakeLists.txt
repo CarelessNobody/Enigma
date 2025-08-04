@@ -3,4 +3,6 @@ project(Engima)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Engima main.cpp)
+add_executable(Engima main.cpp
+        Source/ShortestPath.cpp
+        Header/ShortestPath.h)
