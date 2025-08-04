@@ -8,7 +8,7 @@ project(Enigma)
 # set(SFML_STATIC_LIBRARIES TRUE)
 
 ## In most cases better set in the CMake cache
-set(SFML_DIR "C:/Users/weng2/OneDrive/Desktop/Stuff/SFML-2.5.1/lib/cmake/SFML")
+set(SFML_DIR "SFML-2.5.1/lib/cmake/SFML")
 
 find_package(SFML 2.5.1 COMPONENTS system window graphics audio REQUIRED)
 add_executable(Enigma main.cpp
