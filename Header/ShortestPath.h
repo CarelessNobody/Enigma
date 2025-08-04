@@ -2,10 +2,9 @@
 // Created by weng2 on 8/3/2025.
 //
 
-#ifndef DIJKSTRA_H
-#define DIJKSTRA_H
+#ifndef SHORTESTPATH_H
+#define SHORTESTPATH_H
 
-#include "../Header/ShortestPath.h"
 #include <algorithm>
 #include <fstream>
 #include <sstream>
@@ -209,7 +208,11 @@ public:
             cout << p.first << ", " << p.second << endl;
         }
     }
+
+    vector<string> getGraph() {
+        return graph;
+    }
 };
 
 
-#endif //DIJKSTRA_H
+#endif SHORTESTPATH_H
