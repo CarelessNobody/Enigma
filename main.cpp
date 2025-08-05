@@ -1,3 +1,5 @@
+// created and worked on by Ruihan Weng, Raiden Saunders, and Federico Camargo Balaguera
+
 #include <fstream>
 #include <sstream>
 #include <iostream>
