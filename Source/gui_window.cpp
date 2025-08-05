@@ -1,4 +1,4 @@
-#include "SFML/Graphics.hpp"
+
 #include <chrono>
 #include "../Header/gui_window.h"
 #include "../Header/ShortestPath.h"
@@ -71,12 +71,14 @@ void drawMaze(sf::RenderWindow& window,
 void launchGUI(const vector<string>& maze){
     int rows = maze.size();
     int cols = maze[0].size();
-    int tileSize = 7; // for fixed resolution of tiles
 
-    int mazeW = cols * tileSize; // maze width
-    int mazeH = rows * tileSize; // mase height
-    int offsetX = (width - mazeW)/2;
-    int offsetY = (width - 100 - mazeH)/2;
+    // Dynamically determine tile size to fit maze in window
+    int tileSize = min(width / cols, (height - 100) / rows);
+
+    int mazeW = cols * tileSize;
+    int mazeH = rows * tileSize;
+    int offsetX = (width - mazeW) / 2;
+    int offsetY = (height - 100 - mazeH) / 2;  // Account for bottom panel height
 
     sf::RenderWindow window(sf::VideoMode(width, height), "Maze Visualizer");
     sf::Font font;
@@ -86,7 +88,7 @@ void launchGUI(const vector<string>& maze){
     }
 
     pair<int, int> start = {1, 1};
-    pair<int, int> end = {cols -2, rows -2};
+    pair<int, int> end = {cols - 2, rows - 2};
 
     ShortestPath sp(maze);
 
@@ -100,7 +102,6 @@ void launchGUI(const vector<string>& maze){
     auto t4 = chrono::high_resolution_clock::now();
     double timeAstar = chrono::duration<double, milli>(t4 - t3).count();
 
-    // GUI main loop
     while (window.isOpen()){
         sf::Event event;
         while(window.pollEvent(event)){

@@ -1,16 +1,14 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
-#include <utility>
+#include <string>
 #include <vector>
-#include <ranges>
 #include "Header/gui_window.h"
 
 using namespace std;
 
-vector<string> getMaze(string filename) {
-  ifstream inputFile(filename);
-
+vector<string> getMaze(const string& filepath) {
+  ifstream inputFile(filepath);
   vector<string> maze;
   string line;
 
@@ -23,23 +21,26 @@ vector<string> getMaze(string filename) {
     }
     if (!row.empty())
       maze.push_back(row);
-
   }
-  inputFile.close();
 
+  inputFile.close();
   return maze;
 }
 
-
 int main() {
-  string mazeFile = "maze0_dim42.txt";
-  vector<string> maze = getMaze(mazeFile);
+  string filename;
+  cout << "Enter the name of the maze file (e.g., perfectMazes/maze0.txt): ";
+  getline(cin, filename);
+
+  ifstream testFile(filename);
+  if (!testFile.is_open()) {
+    cerr << "Error: Could not open '" << filename<< "'\n";
+    return 1;
+  }
+  testFile.close(); // We only checked for existence
+
+  vector<string> maze = getMaze(filename);
   launchGUI(maze);
 
   return 0;
-
-  // //Should return no path if starting point is a wall, there is no path, or start and end are the same
-  // //Requires valid m x n graph and start and ending point inside graph
-  // algorithm.printDijkstra({0,0} , {1,1});
-  // algorithm.printAStar({0,0} , {1,1});
 }
