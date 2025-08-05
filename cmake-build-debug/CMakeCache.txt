@@ -251,6 +251,21 @@ Enigma_SOURCE_DIR:STATIC=C:/Users/weng2/CLionProjects/Enigma
 //Path to a file.
 SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
 
+//Value Computed by CMake
+Enigma_BINARY_DIR:STATIC=C:/Users/weng2/CLionProjects/Enigma/cmake-build-debug
+
+//Value Computed by CMake
+Enigma_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+Enigma_SOURCE_DIR:STATIC=C:/Users/weng2/CLionProjects/Enigma
+
+//The directory containing a CMake configuration file for SFML.
+SFML_DIR:PATH=SFML_DIR-NOTFOUND
+
+//Path to a file.
+SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
+
 
 ########################
 # INTERNAL cache entries
