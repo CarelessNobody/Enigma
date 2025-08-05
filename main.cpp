@@ -4,7 +4,7 @@
 #include <utility>
 #include <vector>
 #include <ranges>
-#include "Source/gui_window.cpp"
+#include "Header/gui_window.h"
 
 using namespace std;
 
@@ -32,7 +32,7 @@ vector<string> getMaze(string filename) {
 
 
 int main() {
-  string mazeFile = "mazes/test.txt";
+  string mazeFile = "maze0_dim42.txt";
   vector<string> maze = getMaze(mazeFile);
   launchGUI(maze);
 
@@ -43,5 +43,3 @@ int main() {
   // algorithm.printDijkstra({0,0} , {1,1});
   // algorithm.printAStar({0,0} , {1,1});
 }
-
-

@@ -1,6 +1,7 @@
-#include <SFML/Graphics.hpp>
+#include "SFML/Graphics.hpp"
 #include <chrono>
-#include <ShortestPath.h>
+#include "../Header/gui_window.h"
+#include "../Header/ShortestPath.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ void drawMaze(sf::RenderWindow& window,
     for (int y = 0; y < rows; y++){
         for (int x = 0; x < cols; x++) {
             sf::RectangleShape rect(sf::Vector2f(static_cast<float>(tileSize - 1),
-                                                 static_cast<float>(tileSize - 1)))
+                                                 static_cast<float>(tileSize - 1)));
             rect.setPosition(static_cast<float>(offsetX + x * tileSize),
                              static_cast<float>(offsetY + y * tileSize));
 
@@ -79,7 +80,7 @@ void launchGUI(const vector<string>& maze){
 
     sf::RenderWindow window(sf::VideoMode(width, height), "Maze Visualizer");
     sf::Font font;
-    if (!font.loadFromFile("soemthing.ttf")){
+    if (!font.loadFromFile("font.ttf")){
         cerr << "Failed to load font\n";
         return;
     }
@@ -111,4 +112,3 @@ void launchGUI(const vector<string>& maze){
         window.display();
     }
 }
-        

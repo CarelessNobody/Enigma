@@ -44,7 +44,7 @@ class ShortestPath {
     }
 
 public:
-    ShortestPath(vector<string> &graph) : graph(graph) {}
+    ShortestPath(const vector<string> &graph) : graph(graph) {}
 
     vector<pair<int, int> > dijkstra(pair<int, int> start, pair<int, int> end) {
         if (graph[start.second][start.first] == '1' || graph[end.second][end.first] == '1')
@@ -119,7 +119,7 @@ public:
         if (path.size() == 1)
             return {}; //We didn't find a path
 
-        ranges::reverse(path); //Otherwise it will go in reverse from end to start
+        std::reverse(path.begin(), path.end());; //Otherwise it will go in reverse from end to start
         return path;
     }
 
@@ -173,9 +173,9 @@ public:
                 adj.insert({location.first + 1, location.second}); //Right
 
             for (auto p: adj) {
-                if (closedSet.contains(p) || graph[p.second][p.first] == '1') //Already checked or a wall
+                if (closedSet.find(p) != closedSet.end() || graph[p.second][p.first] == '1') //Already checked or a wall
                     continue;
-                if (!openSet.contains(p)) {
+                if (openSet.find(p) == openSet.end()) {
                     //Needs to be checked
                     parent[convertToIndex(p, graph)] = location;
                     openSet.insert(p);
@@ -215,4 +215,4 @@ public:
 };
 
 
-#endif SHORTESTPATH_H
+#endif
